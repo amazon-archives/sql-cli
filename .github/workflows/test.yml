@@ -17,7 +17,9 @@ jobs:
           virtualenv venv
           source ./venv/bin/activate
       - name: Install dependencies
-        run: pip install --editable .
+        run: 
+          pip install --editable .
+          pip install pytest mock pexpect twine coverage
       - name: Test
         run:
           cd tests
