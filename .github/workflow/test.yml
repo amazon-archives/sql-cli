@@ -1,0 +1,20 @@
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: Set up virtual enviroment
+        run:
+          pip3 install virtualenv
+          virtualenv venv
+          source ./venv/bin/activate
+      - name: Install dependencies
+        run: pip install --editable .
+      - name: Test
+        run:
+          cd tests
+          pytest
