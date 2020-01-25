@@ -10,17 +10,19 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
-          python-version: '3.x'
+          python-version: 3.7
       - name: Set up virtual enviroment
-        run:
+        run: |
           pip3 install virtualenv
           virtualenv venv
           source ./venv/bin/activate
       - name: Install dependencies
-        run: 
+        run: |
+          python -m pip install --upgrade pip
           pip install --editable .
           pip install pytest mock pexpect twine coverage
       - name: Test
-        run:
+        run: |
           cd tests
+          pip install pytest mock pexpect twine coverage
           pytest
