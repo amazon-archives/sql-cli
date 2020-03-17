@@ -28,7 +28,7 @@ See the file itself for a description of all available options.
 - Connect to Elasticsearch node/cluster with authentication on either ES localhost, Open Distro ES, or AES,
 - Load Config file
 - Run single query from Command Line with parameters
-    - *endpoint: * no need to specify a parameter, anything follow by wake word `escli` should be the endpoint. 
+    - *endpoint:* no need to specify a parameter, anything follow by wake word `escli` should be the endpoint. 
     By default, it’s http://localhost:9200
     - *--help:* help page for options and params
     - *-q:* follow by a single query user wants to run.

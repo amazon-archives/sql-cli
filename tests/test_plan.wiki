@@ -11,7 +11,7 @@
     * [ ] Test connecting to a local database.
     * [ ] Test connection fail when connect to invalid endpoint
     * [ ] Test reconnection when connection lost during execution
-    & [ ] Test client selection when connection to different type of endpoint(Open Distro, Local ES, AES)
+    * [ ] Test client selection when connect to different type of endpoint(Open Distro, Local ES, AES)
 
     == Execution ==
     * [ ] Test successful execution given a query.
