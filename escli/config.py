@@ -26,9 +26,10 @@ def config_location():
     if "XDG_CONFIG_HOME" in os.environ:
         return "%s/escli/" % expanduser(os.environ["XDG_CONFIG_HOME"])
     elif platform.system() == "Windows":
+        # USERPROFILE is typically C:\Users\{username}
         return "%s\\AppData\\Local\\dbcli\\escli\\" % os.getenv("USERPROFILE")
     else:
-        return expanduser("~/.conf/escli/")
+        return expanduser("~/.config/escli/")
 
 
 def _load_config(user_config, default_config=None):
@@ -69,7 +70,7 @@ def get_config(esclirc_file=None):
     """
     Get config for escli.
 
-    This config comes from either existing conf in the OS, or create a conf file in the OS, and write default conf
+    This config comes from either existing config in the OS, or create a config file in the OS, and write default config
     including in the package to it.
     """
     from escli.conf import __file__ as package_root

@@ -29,10 +29,10 @@ click.disable_unicode_literals_warning = True
 @click.command()
 @click.argument("endpoint", default="http://localhost:9200")
 @click.option("-q", "--query", "query", type=click.STRING, help="Run single query in non-interactive mode")
-@click.option("-e", "--explain", "explain", is_flag=True, help="Explain sql to DSL")
+@click.option("-e", "--explain", "explain", is_flag=True, help="Explain SQL to ES DSL")
 @click.option(
     "--esclirc",
-    default=config_location() + "conf",
+    default=config_location() + "config",
     envvar="ESCLIRC",
     help="Location of esclirc file.",
     type=click.Path(dir_okay=False),
