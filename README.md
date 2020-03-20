@@ -1,14 +1,15 @@
 # Open Distro Elasticsearch SQL CLI
 
+ODFE: Open Distro for Elasticsearch 
 
-SQL CLI is a stand alone Python application and can be launched by a wake word `escli`. It serves as a support only for 
+ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `escli`. It serves as a support only for 
 [Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). You can move 
 it around to other machines without having to install Elasticsearch on them.
 
 
 ## Installation
 - `pip install escli` 
-- escli is compatible with Python 3, and python 2 is going away soon https://pythonclock.org/ 
+- escli is compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
 
 
 ## Configuration
@@ -25,7 +26,8 @@ See the file itself for a description of all available options.
     - Enable horizontal display (by default) and vertical display when output is too wide
     - Pagination for long output
 - Syntax highlighting
-- Connect to Elasticsearch node/cluster with authentication on either ES localhost, Open Distro ES, or AES,
+- Connect to Elasticsearch node/cluster with/without security on either **ES localhost, Open Distro ES, or AWS Elasticsearch Domain**.
+Refer to [test plan](./tests/test_plan.md) on how to connect to different instance with/without security
 - Load Config file
 - Run single query from Command Line with parameters
     - *endpoint:* no need to specify a parameter, anything follow by wake word `escli` should be the endpoint. 
@@ -45,7 +47,8 @@ See the file itself for a description of all available options.
 
 
 ## Basic Usage
-![](./screenshots/usage.gif)
+- The CLI supports all types of query that ODFE SQL supports. See [ODFE SQL basic usage](https://github.com/opendistro-for-elasticsearch/sql#basic-usage)
+- ![](./screenshots/usage.gif)
 
 
 
@@ -69,30 +72,3 @@ See the [LICENSE](./LICENSE.TXT) file for our project's licensing. We will ask y
 ## Copyright
 
 Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-
-
-
-## Development Guide
-### Build the application in development
-- `pip install virtualenv`
-- `virtualenv venv` to create virtual environment for **Python 3**
-- `source ./venv/bin/activate` activate virtual env.
-- `cd` into project root folder.
-- `pip install --editable .` will install all dependencies from `setup.py`.
-
-### Run CLI
-- Start an Elasticsearch instance from either local, Docker with Open Distro SQL plugin, or AWS Elasticsearch
-- To launch the cli, use wake word `escli` followed by endpoint of your running ES instance. If not specifying 
-any endpoint, it uses http://localhost:9200 by default. 
-
-### Testing Procedure
-- Prerequisites
-    - Build the application
-    - Start a local Elasticsearch instance with 
-    [Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/) installed
-    and listening at http://localhost:9200.
-- `pip install -r requirements-dev.txt` Install test frameworks including Pytest and mock.
-- `cd` into `tests` and run `pytest`
-
-### Style
-- Use [black](https://github.com/psf/black) to format code, with option of `--line-length 120`
