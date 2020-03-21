@@ -2,14 +2,14 @@
 
 ODFE: Open Distro for Elasticsearch 
 
-ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `escli`. It serves as a support only for 
-[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). You can move 
-it around to other machines without having to install Elasticsearch on them.
+ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `odfesql`. It serves as a support only for 
+[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). You can run 
+it on any OS we support, and connect to any valid remote endpoint without installing Elasticsearch.
 
 
 ## Installation
-- `pip install escli` 
-- escli is compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
+- `pip install odfesql` 
+- odfe sql cli is compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
 
 
 ## Configuration
@@ -30,7 +30,7 @@ See the file itself for a description of all available options.
 Refer to [test plan](./tests/test_plan.md) on how to connect to different instance with/without security
 - Load Config file
 - Run single query from Command Line with parameters
-    - *endpoint:* no need to specify a parameter, anything follow by wake word `escli` should be the endpoint. 
+    - *endpoint:* no need to specify a parameter, anything follow by wake word `odfesql` should be the endpoint. 
     By default, it’s http://localhost:9200
     - *--help:* help page for options and params
     - *-q:* follow by a single query user wants to run.

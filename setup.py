@@ -41,7 +41,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="escli",
+    name="odfesql",
     author="Zhongnan",
     author_email="zhongnan.su@outlook.com",
     version=version,
@@ -53,7 +53,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=install_requirements,
-    entry_points={"console_scripts": ["escli=escli.main:cli"]},
+    entry_points={"console_scripts": ["odfesql=escli.main:cli"]},
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",

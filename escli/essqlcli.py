@@ -45,7 +45,7 @@ click.disable_unicode_literals_warning = True
 
 
 class ESSqlCli:
-    """ESSqlCli instance is used to build and run the ES SQL CLI."""
+    """ESSqlCli instance is used to build and run the ODFE SQL CLI."""
 
     def __init__(self, esclirc_file=None, always_use_pager=False):
         # Load conf file
@@ -123,7 +123,7 @@ class ESSqlCli:
 
         while True:
             try:
-                text = self.prompt_app.prompt(message="escli> ")
+                text = self.prompt_app.prompt(message="odfesql> ")
             except KeyboardInterrupt:
                 continue  # Control-C pressed. Try again.
             except EOFError:

@@ -8,7 +8,7 @@
 
 ### Run CLI
 - Start an Elasticsearch instance from either local, Docker with Open Distro SQL plugin, or AWS Elasticsearch
-- To launch the cli, use wake word `escli` followed by endpoint of your running ES instance. If not specifying 
+- To launch the cli, use wake word `odfesql` followed by endpoint of your running ES instance. If not specifying 
 any endpoint, it uses http://localhost:9200 by default. 
 
 ### Testing
