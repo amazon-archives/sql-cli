@@ -39,6 +39,7 @@ Refer to [test plan](./tests/test_plan.md) on how to connect to different instan
     - *-u:* username to connect to Elasticsearch 
     - *-w:* password for username
     - *-e:* translate sql to DSL
+    - *--aws:* use aws sigV4 authentication
 
 - Run the CLI with parameters
     - *-p*: always use pager to display output

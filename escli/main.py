@@ -65,12 +65,11 @@ click.disable_unicode_literals_warning = True
          length/width of output",
 )
 @click.option(
-    "-aws",
-    "--use-aws-auth",
+    "--aws",
     "use_aws_credentials",
     is_flag=True,
     default=False,
-    help="Use AWS credentials to connect to AWS ELasticsearch domain",
+    help="Use AWS sigV4 to connect to AWS ELasticsearch domain",
 )
 def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username, password, always_use_pager,
         use_aws_credentials):
