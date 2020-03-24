@@ -47,7 +47,7 @@ click.disable_unicode_literals_warning = True
 class ESSqlCli:
     """ESSqlCli instance is used to build and run the ODFE SQL CLI."""
 
-    def __init__(self, esclirc_file=None, always_use_pager=False):
+    def __init__(self, esclirc_file=None, always_use_pager=False, use_aws_credentials=False):
         # Load conf file
         config = self.config = get_config(esclirc_file)
         literal = self.literal = self._get_literals()
@@ -55,6 +55,7 @@ class ESSqlCli:
         self.prompt_app = None
         self.es_executor = None
         self.always_use_pager = always_use_pager
+        self.use_aws_credentials = use_aws_credentials
         self.keywords_list = literal["keywords"]
         self.functions_list = literal["functions"]
         self.syntax_style = config["main"]["syntax_style"]
@@ -164,7 +165,7 @@ class ESSqlCli:
             click.echo(text, color=color)
 
     def connect(self, endpoint, http_auth=None):
-        self.es_executor = ESConnection(endpoint, http_auth)
+        self.es_executor = ESConnection(endpoint, http_auth, self.use_aws_credentials)
         self.es_executor.set_connection()
 
     def _get_literals(self):

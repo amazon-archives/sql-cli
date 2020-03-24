@@ -64,7 +64,16 @@ click.disable_unicode_literals_warning = True
     help="Always use pager to display output. If not specified, smart pager mode will be used according to the \
          length/width of output",
 )
-def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username, password, always_use_pager):
+@click.option(
+    "-aws",
+    "--use-aws-auth",
+    "use_aws_credentials",
+    is_flag=True,
+    default=False,
+    help="Use AWS credentials to connect to AWS ELasticsearch domain",
+)
+def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username, password, always_use_pager,
+        use_aws_credentials):
     """
     Provide endpoint for Elasticsearch client.
     By default, it uses http://localhost:9200 to connect.
@@ -79,7 +88,7 @@ def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username,
 
     # handle single query without more interaction with user
     if query:
-        es_executor = ESConnection(endpoint, http_auth)
+        es_executor = ESConnection(endpoint, http_auth, use_aws_credentials)
         es_executor.set_connection()
         if explain:
             output = es_executor.execute_query(query, explain=True, use_console=False)
@@ -95,7 +104,7 @@ def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username,
         sys.exit(0)
 
     # use console to interact with user
-    escli = ESSqlCli(esclirc_file=esclirc, always_use_pager=always_use_pager)
+    escli = ESSqlCli(esclirc_file=esclirc, always_use_pager=always_use_pager, use_aws_credentials=use_aws_credentials)
     escli.connect(endpoint, http_auth)
     escli.run_cli()
 

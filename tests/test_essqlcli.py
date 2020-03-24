@@ -25,6 +25,7 @@ from escli.esstyle import style_factory
 
 AUTH = None
 QUERY_WITH_CTRL_D = "select * from %s;\r\x04\r" % TEST_INDEX_NAME
+USE_AWS_CREDENTIALS = False
 
 
 @pytest.fixture()
@@ -39,7 +40,7 @@ class TestEssqlcli:
         ) as mock_set_connectiuon:
             cli.connect(endpoint=ENDPOINT)
 
-            mock_ESConnection.assert_called_with(ENDPOINT, AUTH)
+            mock_ESConnection.assert_called_with(ENDPOINT, AUTH, USE_AWS_CREDENTIALS)
             mock_set_connectiuon.assert_called()
 
     @estest

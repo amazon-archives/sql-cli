@@ -72,4 +72,5 @@ setup(
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
+    python_requires='>=3.0'
 )

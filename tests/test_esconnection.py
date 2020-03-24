@@ -109,7 +109,7 @@ class TestExecutor:
 
     def test_select_client(self):
         od_test_executor = ESConnection(endpoint=OPEN_DISTRO_ENDPOINT, http_auth=AUTH)
-        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT)
+        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT, use_aws_credentials=True)
 
         with mock.patch.object(od_test_executor, "get_open_distro_client") as mock_od_client, mock.patch.object(
             ESConnection, "is_sql_plugin_installed", return_value=True
@@ -134,7 +134,7 @@ class TestExecutor:
             )
 
     def test_get_aes_client(self):
-        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT)
+        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT, use_aws_credentials=True)
 
         with mock.patch.object(Elasticsearch, "__init__", return_value=None) as mock_es:
             aes_test_executor.get_aes_client()
