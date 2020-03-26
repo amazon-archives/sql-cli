@@ -33,7 +33,7 @@ any endpoint, it uses http://localhost:9200 by default.
 ### Workflow
 
 1. Update version number
-    1. Modify the version number in `_init_.py` under `odfesql_cli` package. It will be used by `setup.py` for release.
+    1. Modify the version number in `_init_.py` under `escli` package. It will be used by `setup.py` for release.
 2. Create/Update `setup.py` (if needed)
     1. For more details refer to https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py 
 3. Update README.md, Legal and copyright files(if needed)
@@ -42,7 +42,6 @@ any endpoint, it uses http://localhost:9200 by default.
 4. Generate distribution archives
     1. Make sure you have the latest versions of `setuptools` and `wheel` installed:  `pip install --user --upgrade setuptools wheel`
     2. Run this command from the same directory where `setup.py` is located: `python3 setup.py sdist bdist_wheel`
-    3. Check artifacts under `sql-cli/dist/`, there should be a tar file and a whi file with correct version. Remove other deprecated artifacts.
 5. Upload the distribution archives to TestPyPI
     1. Register an account on [testPyPI](https://test.pypi.org/)
     2. `pip install --user —upgrade twine `

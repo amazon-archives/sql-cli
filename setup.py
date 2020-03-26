@@ -30,7 +30,7 @@ install_requirements = [
 
 _version_re = re.compile(r"__version__\s+=\s+(.*)")
 
-with open("odfesql_cli/__init__.py", "rb") as f:
+with open("escli/__init__.py", "rb") as f:
     version = str(
         ast.literal_eval(_version_re.search(f.read().decode("utf-8")).group(1))
     )
@@ -48,12 +48,12 @@ setup(
     license="Apache 2.0",
     url="https://opendistro.github.io/for-elasticsearch-docs/",
     packages=find_packages(),
-    package_data={"odfesql_cli": ["conf/clirc", "esliterals/esliterals.json"]},
+    package_data={"escli": ["conf/esclirc", "esliterals/esliterals.json"]},
     description=description,
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=install_requirements,
-    entry_points={"console_scripts": ["odfesql=odfesql_cli.main:cli"]},
+    entry_points={"console_scripts": ["odfesql=escli.main:cli"]},
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
@@ -72,5 +72,4 @@ setup(
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    python_requires='>=3.0'
 )

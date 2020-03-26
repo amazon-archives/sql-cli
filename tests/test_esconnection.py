@@ -20,7 +20,7 @@ from elasticsearch.exceptions import ConnectionError
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 
 from utils import estest, load_data, run, TEST_INDEX_NAME
-from odfesql_cli.esconnection import ESConnection
+from escli.esconnection import ESConnection
 
 INVALID_ENDPOINT = "http://invalid:9200"
 OPEN_DISTRO_ENDPOINT = "https://opedistro:9200"
@@ -59,7 +59,7 @@ class TestExecutor:
             "type": "IndexNotFoundException",
         }
 
-        with mock.patch("odfesql_cli.esconnection.click.secho") as mock_secho:
+        with mock.patch("escli.esconnection.click.secho") as mock_secho:
             run(connection, "select * from non-existed")
 
         mock_secho.assert_called_with(message=str(expected), fg="red")
@@ -68,7 +68,7 @@ class TestExecutor:
         test_executor = ESConnection(endpoint=INVALID_ENDPOINT)
         err_message = "Can not connect to endpoint %s" % INVALID_ENDPOINT
 
-        with mock.patch("sys.exit") as mock_sys_exit, mock.patch("odfesql_cli.esconnection.click.secho") as mock_secho:
+        with mock.patch("sys.exit") as mock_sys_exit, mock.patch("escli.esconnection.click.secho") as mock_secho:
             test_executor.set_connection()
 
         mock_sys_exit.assert_called()
@@ -83,7 +83,7 @@ class TestExecutor:
             else:
                 return ConnectionError()
 
-        with mock.patch("odfesql_cli.esconnection.click.secho") as mock_secho, mock.patch.object(
+        with mock.patch("escli.esconnection.click.secho") as mock_secho, mock.patch.object(
             test_esexecutor, "set_connection"
         ) as mock_set_connection:
             # Assume reconnection success
@@ -109,7 +109,7 @@ class TestExecutor:
 
     def test_select_client(self):
         od_test_executor = ESConnection(endpoint=OPEN_DISTRO_ENDPOINT, http_auth=AUTH)
-        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT, use_aws_authentication=True)
+        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT)
 
         with mock.patch.object(od_test_executor, "get_open_distro_client") as mock_od_client, mock.patch.object(
             ESConnection, "is_sql_plugin_installed", return_value=True
@@ -134,7 +134,7 @@ class TestExecutor:
             )
 
     def test_get_aes_client(self):
-        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT, use_aws_authentication=True)
+        aes_test_executor = ESConnection(endpoint=AES_ENDPOINT)
 
         with mock.patch.object(Elasticsearch, "__init__", return_value=None) as mock_es:
             aes_test_executor.get_aes_client()

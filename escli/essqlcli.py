@@ -44,18 +44,17 @@ COLOR_CODE_REGEX = re.compile(r"\x1b(\[.*?[@-~]|\].*?(\x07|\x1b\\))")
 click.disable_unicode_literals_warning = True
 
 
-class OdfeSqlCli:
-    """OdfeSqlCli instance is used to build and run the ODFE SQL CLI."""
+class ESSqlCli:
+    """ESSqlCli instance is used to build and run the ODFE SQL CLI."""
 
-    def __init__(self, clirc_file=None, always_use_pager=False, use_aws_authentication=False):
+    def __init__(self, esclirc_file=None, always_use_pager=False):
         # Load conf file
-        config = self.config = get_config(clirc_file)
+        config = self.config = get_config(esclirc_file)
         literal = self.literal = self._get_literals()
 
         self.prompt_app = None
         self.es_executor = None
         self.always_use_pager = always_use_pager
-        self.use_aws_authentication = use_aws_authentication
         self.keywords_list = literal["keywords"]
         self.functions_list = literal["functions"]
         self.syntax_style = config["main"]["syntax_style"]
@@ -63,7 +62,7 @@ class OdfeSqlCli:
         self.table_format = config["main"]["table_format"]
         self.multiline_continuation_char = config["main"]["multiline_continuation_char"]
         self.multi_line = config["main"].as_bool("multi_line")
-        self.multiline_mode = config["main"].get("multi_line_mode", "odfesql_cli")
+        self.multiline_mode = config["main"].get("multi_line_mode", "escli")
         self.null_string = config["main"].get("null_string", "null")
         self.style_output = style_factory_output(self.syntax_style, self.cli_style)
 
@@ -165,7 +164,7 @@ class OdfeSqlCli:
             click.echo(text, color=color)
 
     def connect(self, endpoint, http_auth=None):
-        self.es_executor = ESConnection(endpoint, http_auth, self.use_aws_authentication)
+        self.es_executor = ESConnection(endpoint, http_auth)
         self.es_executor.set_connection()
 
     def _get_literals(self):
@@ -174,7 +173,7 @@ class OdfeSqlCli:
 
         :return: a dict that is parsed from esliterals.json
         """
-        from odfesql_cli.esliterals import __file__ as package_root
+        from escli.esliterals import __file__ as package_root
 
         package_root = os.path.dirname(package_root)
 

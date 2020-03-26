@@ -34,10 +34,10 @@ def connection():
 
 @pytest.fixture(scope="function")
 def default_config_location():
-    from odfesql_cli.conf import __file__ as package_root
+    from escli.conf import __file__ as package_root
 
     package_root = os.path.dirname(package_root)
-    default_config = os.path.join(package_root, "clirc")
+    default_config = os.path.join(package_root, "esclirc")
 
     yield default_config
 
