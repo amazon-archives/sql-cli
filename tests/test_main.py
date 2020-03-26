@@ -18,8 +18,8 @@ from textwrap import dedent
 from click.testing import CliRunner
 
 from utils import estest, load_data, run, get_connection, TEST_INDEX_NAME
-from escli.main import cli
-from escli.essqlcli import ESSqlCli
+from odfesql_cli.main import cli
+from odfesql_cli.odfesql_cli import OdfeSqlCli
 
 INVALID_ENDPOINT = "http://invalid:9200"
 ENDPOINT = "http://localhost:9200"
@@ -44,7 +44,7 @@ class TestMain:
             +-----+"""
         )
 
-        with mock.patch("escli.main.click.echo") as mock_echo, mock.patch("escli.main.click.secho") as mock_secho:
+        with mock.patch("odfesql_cli.main.click.echo") as mock_echo, mock.patch("odfesql_cli.main.click.secho") as mock_secho:
             runner = CliRunner()
 
             # test -q -e
@@ -63,8 +63,8 @@ class TestMain:
 
     @estest
     def test_cli(self):
-        with mock.patch.object(ESSqlCli, "connect") as mock_connect, mock.patch.object(
-            ESSqlCli, "run_cli"
+        with mock.patch.object(OdfeSqlCli, "connect") as mock_connect, mock.patch.object(
+            OdfeSqlCli, "run_cli"
         ) as mock_run_cli:
             runner = CliRunner()
             result = runner.invoke(cli)

@@ -10,12 +10,12 @@ remote Elasticsearch endpoint.
 
 ## Installation
 - `pip install odfesql` 
-- ODFE SQL CLI is compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
+- ODFE SQL CLI is only compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
 
 
 ## Configuration
-- A config file is automatically created at `~/.config/escli/config` at first launch (for mac os and Linux). 
-Check out [esclirc](./escli/conf/esclirc) for details of all available configurations.
+- A config file is automatically created at `~/.config/odfesql-cli/config` at first launch (for MacOS and Linux). 
+Check out [clirc](./odfesql_cli/conf/clirc) for details of all available configurations.
 - It can be configured and will be auto-loaded next time.
 
 ## Features
@@ -43,7 +43,7 @@ Check out [esclirc](./escli/conf/esclirc) for details of all available configura
         - Elasticsearch OSS with [Open distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
         - IP-based AWS Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
 
-    - *--aws:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
+    - *--aws-auth:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
     CLI will try to retrieve this config to connect.
 
 - Run single query from command line with options
@@ -55,7 +55,7 @@ Check out [esclirc](./escli/conf/esclirc) for details of all available configura
 
 - Run the CLI with options
     - *-p*: always use pager to display output
-    - *--esclirc*: provide path of config file to load
+    - *--clirc*: provide path of config file to load
 
 
 

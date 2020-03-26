@@ -17,11 +17,11 @@ import pytest
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.input.defaults import create_pipe_input
 
-from escli.esbuffer import es_is_multiline
+from odfesql_cli.esbuffer import es_is_multiline
 from utils import estest, load_data, TEST_INDEX_NAME, ENDPOINT
-from escli.essqlcli import ESSqlCli
-from escli.esconnection import ESConnection
-from escli.esstyle import style_factory
+from odfesql_cli.odfesql_cli import OdfeSqlCli
+from odfesql_cli.esconnection import ESConnection
+from odfesql_cli.esstyle import style_factory
 
 AUTH = None
 QUERY_WITH_CTRL_D = "select * from %s;\r\x04\r" % TEST_INDEX_NAME
@@ -30,10 +30,10 @@ USE_AWS_CREDENTIALS = False
 
 @pytest.fixture()
 def cli(default_config_location):
-    return ESSqlCli(esclirc_file=default_config_location, always_use_pager=False)
+    return OdfeSqlCli(clirc_file=default_config_location, always_use_pager=False)
 
 
-class TestEssqlcli:
+class TestOdfeSqlCli:
     def test_connect(self, cli):
         with mock.patch.object(ESConnection, "__init__", return_value=None) as mock_ESConnection, mock.patch.object(
             ESConnection, "set_connection"
@@ -53,7 +53,7 @@ class TestEssqlcli:
             "fetched rows / total rows = 1/1" "\n+-----+\n| \x1b[38;5;47;01ma\x1b[39;00m   |\n|-----|\n| aws |\n+-----+"
         )
 
-        with mock.patch.object(ESSqlCli, "echo_via_pager") as mock_pager, mock.patch.object(
+        with mock.patch.object(OdfeSqlCli, "echo_via_pager") as mock_pager, mock.patch.object(
             cli, "build_cli"
         ) as mock_prompt:
             inp = create_pipe_input()
