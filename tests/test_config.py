@@ -16,7 +16,7 @@ import os
 import stat
 import pytest
 
-from escli.config import ensure_dir_exists
+from odfesql_cli.config import ensure_dir_exists
 
 
 class TestConfig:

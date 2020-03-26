@@ -30,7 +30,7 @@ class ESConnection:
     as well as send user's SQL query to Elasticsearch.
     """
 
-    def __init__(self, endpoint=None, http_auth=None):
+    def __init__(self, endpoint=None, http_auth=None, use_aws_authentication=False):
         """Initialize an ESConnection instance.
 
         Set up client and get indices list.
@@ -46,6 +46,7 @@ class ESConnection:
         self.indices_list = []
         self.endpoint = endpoint
         self.http_auth = http_auth
+        self.use_aws_authentication = use_aws_authentication
 
     def get_indices(self):
         if self.client:
@@ -61,7 +62,7 @@ class ESConnection:
         if credentials is not None:
             self.aws_auth = AWS4Auth(credentials.access_key, credentials.secret_key, region, service)
         else:
-            click.secho(message="Can not retrieve credentials, check your aws config", fg="red")
+            click.secho(message="Can not retrieve your AWS credentials, check your AWS config", fg="red")
 
         aes_client = Elasticsearch(
             hosts=[{"host": str(self.endpoint), "port": 443}],
@@ -96,9 +97,8 @@ class ESConnection:
         if self.http_auth:
             es_client = self.get_open_distro_client()
 
-        elif str(self.endpoint).endswith("es.amazonaws.com"):
+        elif self.use_aws_authentication:
             es_client = self.get_aes_client()
-
         else:
             es_client = Elasticsearch([self.endpoint], verify_certs=True)
 

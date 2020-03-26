@@ -20,7 +20,7 @@ import sys
 from .config import config_location
 from .esconnection import ESConnection
 from .utils import OutputSettings
-from .essqlcli import ESSqlCli
+from .odfesql_cli import OdfeSqlCli
 from .formatter import Formatter
 
 click.disable_unicode_literals_warning = True
@@ -31,10 +31,10 @@ click.disable_unicode_literals_warning = True
 @click.option("-q", "--query", "query", type=click.STRING, help="Run single query in non-interactive mode")
 @click.option("-e", "--explain", "explain", is_flag=True, help="Explain SQL to ES DSL")
 @click.option(
-    "--esclirc",
+    "--clirc",
     default=config_location() + "config",
-    envvar="ESCLIRC",
-    help="Location of esclirc file.",
+    envvar="CLIRC",
+    help="Location of clirc file.",
     type=click.Path(dir_okay=False),
 )
 @click.option(
@@ -64,7 +64,15 @@ click.disable_unicode_literals_warning = True
     help="Always use pager to display output. If not specified, smart pager mode will be used according to the \
          length/width of output",
 )
-def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username, password, always_use_pager):
+@click.option(
+    "--aws-auth",
+    "use_aws_authentication",
+    is_flag=True,
+    default=False,
+    help="Use AWS sigV4 to connect to AWS ELasticsearch domain",
+)
+def cli(endpoint, query, explain, clirc, result_format, is_vertical, username, password, always_use_pager,
+        use_aws_authentication):
     """
     Provide endpoint for Elasticsearch client.
     By default, it uses http://localhost:9200 to connect.
@@ -79,7 +87,7 @@ def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username,
 
     # handle single query without more interaction with user
     if query:
-        es_executor = ESConnection(endpoint, http_auth)
+        es_executor = ESConnection(endpoint, http_auth, use_aws_authentication)
         es_executor.set_connection()
         if explain:
             output = es_executor.execute_query(query, explain=True, use_console=False)
@@ -95,9 +103,9 @@ def cli(endpoint, query, explain, esclirc, result_format, is_vertical, username,
         sys.exit(0)
 
     # use console to interact with user
-    escli = ESSqlCli(esclirc_file=esclirc, always_use_pager=always_use_pager)
-    escli.connect(endpoint, http_auth)
-    escli.run_cli()
+    odfesql_cli = OdfeSqlCli(clirc_file=clirc, always_use_pager=always_use_pager, use_aws_authentication=use_aws_authentication)
+    odfesql_cli.connect(endpoint, http_auth)
+    odfesql_cli.run_cli()
 
 
 if __name__ == "__main__":

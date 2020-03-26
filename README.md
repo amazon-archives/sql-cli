@@ -3,52 +3,59 @@
 ODFE: Open Distro for Elasticsearch 
 
 ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `odfesql`. It serves as a support only for 
-[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). You can run 
-it on any OS we support, and connect to any valid remote endpoint without installing Elasticsearch.
+[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). User must have ODFE SQL
+plugin installed to the Elasticsearch instance to connect to. Usr can run this CLI on any OS we support, and connect to any valid
+remote Elasticsearch endpoint.
 
 
 ## Installation
 - `pip install odfesql` 
-- odfe sql cli is compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
+- ODFE SQL CLI is only compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
 
 
 ## Configuration
-- A config file is automatically created at `~/.config/escli/config` at first launch. 
-See the file itself for a description of all available options.
-
+- A config file is automatically created at `~/.config/odfesql-cli/config` at first launch (for MacOS and Linux). 
+Check out [clirc](./odfesql_cli/conf/clirc) for details of all available configurations.
+- It can be configured and will be auto-loaded next time.
 
 ## Features
 - Multiline input
-- Auto-completion with index suggestion
+- Input Auto-completion with index suggestion
+- Syntax highlighting
 - Formatted output
     - Tabular format
     - Fields name with color
-    - Enable horizontal display (by default) and vertical display when output is too wide
+    - Enable horizontal display (by default) and vertical display when output is too wide, for better visualization
     - Pagination for long output
-- Syntax highlighting
-- Connect to Elasticsearch node/cluster with/without security on either **ES localhost, Open Distro ES, or AWS Elasticsearch Domain**.
-Refer to [test plan](./tests/test_plan.md) on how to connect to different instance with/without security
-- Load Config file
-- Run single query from Command Line with parameters
-    - *endpoint:* no need to specify a parameter, anything follow by wake word `odfesql` should be the endpoint. 
-    By default, it’s http://localhost:9200
-    - *--help:* help page for options and params
-    - *-q:* follow by a single query user wants to run.
-    - *-f:* support *jdbc/raw* format output
-    - *-v:* display data vertically
-    - *-u:* username to connect to Elasticsearch 
-    - *-w:* password for username
-    - *-e:* translate sql to DSL
 
-- Run the CLI with parameters
-    - *-p*: always use pager to display output
-    - *--esclirc*: provide path of config file to load.
-
-
+- Connect to Elasticsearch with/without security enabled on either **Elasticsarch, Elasticsarch OSS, or AWS Elasticsearch Domain**.
+- Load config file
 
 ## Basic Usage
-- The CLI supports all types of query that ODFE SQL supports. See [ODFE SQL basic usage](https://github.com/opendistro-for-elasticsearch/sql#basic-usage)
 - ![](./screenshots/usage.gif)
+- The CLI supports all types of query that ODFE SQL supports. Refer to [ODFE SQL basic usage](https://github.com/opendistro-for-elasticsearch/sql#basic-usage)
+    
+- Configurable connection properties
+    - *endpoint:* no need to specify an option, anything follow by launch word `odfesql` is regarded as the endpoint. 
+    If user doesn't provide an endpoint, by default it will try to connect to http://localhost:9200
+    - *-u/-w:* username and password. User needs to provide credentials when connecting to:
+        - Elasticsearch with X-pack security enabled
+        - Elasticsearch OSS with [Open distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
+        - IP-based AWS Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
+
+    - *--aws-auth:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
+    CLI will try to retrieve this config to connect.
+
+- Run single query from command line with options
+    - *--help:* help page for options
+    - *-q:* follow by a single query
+    - *-f:* support *jdbc/raw* format output
+    - *-v:* display data vertically
+    - *-e:* translate sql to DSL
+
+- Run the CLI with options
+    - *-p*: always use pager to display output
+    - *--clirc*: provide path of config file to load
 
 
 
