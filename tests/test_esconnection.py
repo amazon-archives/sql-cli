@@ -140,7 +140,7 @@ class TestExecutor:
             aes_test_executor.get_aes_client()
 
             mock_es.assert_called_with(
-                hosts=[{"host": str(AES_ENDPOINT), "port": 443}],
+                hosts=[AES_ENDPOINT],
                 http_auth=aes_test_executor.aws_auth,
                 use_ssl=True,
                 verify_certs=True,
