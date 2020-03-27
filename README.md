@@ -41,7 +41,7 @@ Check out [clirc](./odfesql_cli/conf/clirc) for details of all available configu
     - *-u/-w:* username and password. User needs to provide credentials when connecting to:
         - Elasticsearch with X-pack security enabled
         - Elasticsearch OSS with [Open distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
-        - IP-based AWS Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
+        - AWS Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
 
     - *--aws-auth:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
     CLI will try to retrieve this config to connect.
