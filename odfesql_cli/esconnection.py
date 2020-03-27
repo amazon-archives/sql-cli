@@ -65,7 +65,7 @@ class ESConnection:
             click.secho(message="Can not retrieve your AWS credentials, check your AWS config", fg="red")
 
         aes_client = Elasticsearch(
-            hosts=[{"host": str(self.endpoint), "port": 443}],
+            hosts=[self.endpoint],
             http_auth=self.aws_auth,
             use_ssl=True,
             verify_certs=True,
