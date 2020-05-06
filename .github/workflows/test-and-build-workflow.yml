@@ -32,9 +32,9 @@ jobs:
         run: python setup.py sdist bdist_wheel
 
       - name: Create Artifact Path
-          run: |
-            mkdir -p opendistro-sql-cli-builds
-            cp -r ./dist/*.tar.gz ./dist/*.whl opendistro-sql-cli-builds/
+        run: |
+          mkdir -p opendistro-sql-cli-builds
+          cp -r ./dist/*.tar.gz ./dist/*.whl opendistro-sql-cli-builds/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
