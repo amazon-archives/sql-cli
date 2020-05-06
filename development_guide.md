@@ -48,7 +48,7 @@ any endpoint, it uses http://localhost:9200 by default.
     2. `pip install --user —upgrade twine `
     3. `python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
 6. Install your package from TestPyPI and do manual test
-    1. `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple odfe-sql`
+    1. `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple odfesql`
 7. Upload to PyPI
     1. Register an account on [PyPI](https://pypi.org/), note that these are two separate servers and the credentials from the test server are not shared with the main server.
     2. Use `twine upload dist/*` to upload your package and enter your credentials for the account you registered on PyPI.

@@ -19,7 +19,7 @@ from setuptools import setup, find_packages
 
 install_requirements = [
     "click == 7.1.1",
-    "prompt_toolkit == 2.0.6",
+    "prompt_toolkit == 3.0.5",
     "Pygments == 2.6.1",
     "cli_helpers[styles] == 1.2.1",
     "elasticsearch == 7.5.1",
