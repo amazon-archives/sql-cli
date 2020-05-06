@@ -40,18 +40,18 @@ any endpoint, it uses http://localhost:9200 by default.
     1. Update README.md when there is a critical feature added.
     2. Update `THIRD-PARTY` files if there is a new dependency added.
 4. Generate distribution archives
-    1. Make sure you have the latest versions of `setuptools` and `wheel` installed:  `pip install --user --upgrade setuptools wheel`
+    1. Make sure you have the latest versions of `setuptools` and `wheel` installed:  `python3 -m pip install --user --upgrade setuptools wheel`
     2. Run this command from the same directory where `setup.py` is located: `python3 setup.py sdist bdist_wheel`
-    3. Check artifacts under `sql-cli/dist/`, there should be a tar file and a whi file with correct version. Remove other deprecated artifacts.
+    3. Check artifacts under `sql-cli/dist/`, there should be a `.tar.gz` file and a `.whi` file with correct version. Remove other deprecated artifacts.
 5. Upload the distribution archives to TestPyPI
     1. Register an account on [testPyPI](https://test.pypi.org/)
-    2. `pip install --user —upgrade twine `
+    2. `python3 -m pip install --user --upgrade twine`
     3. `python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
 6. Install your package from TestPyPI and do manual test
-    1. `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple odfe-sql`
+    1. `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple odfesql`
 7. Upload to PyPI
     1. Register an account on [PyPI](https://pypi.org/), note that these are two separate servers and the credentials from the test server are not shared with the main server.
-    2. Use `twine upload dist/*` to upload your package and enter your credentials for the account you registered on PyPI.
+    2. Use `twine upload dist/*` to upload your package and enter your credentials for the account you registered on PyPI.You don’t need to specify --repository; the package will upload to https://pypi.org/ by default.
 8. Install your package from PyPI using `pip install [your-package-name]`
 
 ### Reference
