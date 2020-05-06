@@ -1,0 +1,28 @@
+name: Test and Build
+
+on: [pull_request, push]
+
+jobs:
+  build:
+
+    runs-on: [ubuntu-16.04]
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - name: Checkout SQL CLI
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Run Tox
+        run: tox
