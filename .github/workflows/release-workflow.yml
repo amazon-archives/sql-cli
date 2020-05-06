@@ -39,7 +39,7 @@ jobs:
         run: |
           python setup.py sdist bdist_wheel
           artifact=`ls ./dist/*.tar.gz`
-          wheel_artifact= `ls ./dist/*.whl`
+          wheel_artifact=`ls ./dist/*.whl`
 
           aws s3 cp $artifact s3://artifacts.opendistroforelasticsearch.amazon.com/downloads/elasticsearch-clients/opendistro-sql-cli/
           aws s3 cp $wheel_artifact s3://artifacts.opendistroforelasticsearch.amazon.com/downloads/elasticsearch-clients/opendistro-sql-cli/
