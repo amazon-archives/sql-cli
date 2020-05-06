@@ -1,0 +1,44 @@
+name: Test and Build
+
+on: [pull_request, push]
+
+jobs:
+  build:
+
+    runs-on: [ubuntu-16.04]
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - name: Checkout SQL CLI
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install setuptools wheel
+
+      # TODO: this test will pass, because we haven't spin up an ES instance
+      - name: Run Tox Testing
+        run: tox
+
+      - name: Build Artifact
+        run: python setup.py sdist bdist_wheel
+
+      - name: Create Artifact Path
+        run: |
+          mkdir -p opendistro-sql-cli-builds
+          cp -r ./dist/*.tar.gz ./dist/*.whl opendistro-sql-cli-builds/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: opendistro-sql-cli
+          path: opendistro-sql-cli-builds
