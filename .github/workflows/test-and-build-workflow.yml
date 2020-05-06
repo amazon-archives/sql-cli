@@ -23,6 +23,21 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
+          pip install setuptools wheel
 
       - name: Run Tox
         run: tox
+
+      - name: Build Artifact
+        run: python setup.py sdist bdist_wheel
+
+      - name: Create Artifact Path
+          run: |
+            mkdir -p opendistro-sql-cli-builds
+            cp -r ./dist/*.tar.gz ./dist/*.whl opendistro-sql-cli-builds/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: opendistro-sql-cli
+          path: opendistro-sql-cli-builds
