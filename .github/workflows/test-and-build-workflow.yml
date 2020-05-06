@@ -25,7 +25,8 @@ jobs:
           pip install -r requirements-dev.txt
           pip install setuptools wheel
 
-      - name: Run Tox
+      # TODO: this test will pass, because we haven't spin up an ES instance
+      - name: Run Tox Testing
         run: tox
 
       - name: Build Artifact
