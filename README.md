@@ -78,4 +78,4 @@ See the [LICENSE](./LICENSE.TXT) file for our project's licensing. We will ask y
 
 ## Copyright
 
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
