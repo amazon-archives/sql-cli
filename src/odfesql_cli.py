@@ -63,7 +63,7 @@ class OdfeSqlCli:
         self.table_format = config["main"]["table_format"]
         self.multiline_continuation_char = config["main"]["multiline_continuation_char"]
         self.multi_line = config["main"].as_bool("multi_line")
-        self.multiline_mode = config["main"].get("multi_line_mode", "odfesql_cli")
+        self.multiline_mode = config["main"].get("multi_line_mode", "src")
         self.null_string = config["main"].get("null_string", "null")
         self.style_output = style_factory_output(self.syntax_style, self.cli_style)
 
@@ -174,7 +174,7 @@ class OdfeSqlCli:
 
         :return: a dict that is parsed from esliterals.json
         """
-        from odfesql_cli.esliterals import __file__ as package_root
+        from src.esliterals import __file__ as package_root
 
         package_root = os.path.dirname(package_root)
 

@@ -18,8 +18,8 @@ from textwrap import dedent
 from click.testing import CliRunner
 
 from utils import estest, load_data, run, get_connection, TEST_INDEX_NAME
-from odfesql_cli.main import cli
-from odfesql_cli.odfesql_cli import OdfeSqlCli
+from src.main import cli
+from src.odfesql_cli import OdfeSqlCli
 
 INVALID_ENDPOINT = "http://invalid:9200"
 ENDPOINT = "http://localhost:9200"
@@ -44,7 +44,7 @@ class TestMain:
             +-----+"""
         )
 
-        with mock.patch("odfesql_cli.main.click.echo") as mock_echo, mock.patch("odfesql_cli.main.click.secho") as mock_secho:
+        with mock.patch("src.main.click.echo") as mock_echo, mock.patch("src.main.click.secho") as mock_secho:
             runner = CliRunner()
 
             # test -q -e

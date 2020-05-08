@@ -68,12 +68,12 @@ def _write_default_config(source, destination, overwrite=False):
 # https://stackoverflow.com/questions/40193112/python-setuptools-distribute-configuration-files-to-os-specific-directories
 def get_config(clirc_file=None):
     """
-    Get config for odfesql_cli.
+    Get config for odfesql cli.
 
     This config comes from either existing config in the OS, or create a config file in the OS, and write default config
     including in the package to it.
     """
-    from odfesql_cli.conf import __file__ as package_root
+    from src.conf import __file__ as package_root
 
     package_root = os.path.dirname(package_root)
 

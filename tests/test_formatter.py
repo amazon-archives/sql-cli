@@ -18,17 +18,17 @@ import mock
 import pytest
 from collections import namedtuple
 
-from odfesql_cli.odfesql_cli import OdfeSqlCli, COLOR_CODE_REGEX
-from odfesql_cli.formatter import Formatter
-from odfesql_cli.utils import OutputSettings
+from src.odfesql_cli import OdfeSqlCli, COLOR_CODE_REGEX
+from src.formatter import Formatter
+from src.utils import OutputSettings
 
 
 class TestFormatter:
     @pytest.fixture
     def pset_pager_mocks(self):
         cli = OdfeSqlCli()
-        with mock.patch("odfesql_cli.main.click.echo") as mock_echo, mock.patch(
-            "odfesql_cli.main.click.echo_via_pager"
+        with mock.patch("src.main.click.echo") as mock_echo, mock.patch(
+            "src.main.click.echo_via_pager"
         ) as mock_echo_via_pager, mock.patch.object(cli, "prompt_app") as mock_app:
             yield cli, mock_echo, mock_echo_via_pager, mock_app
 
@@ -120,7 +120,7 @@ class TestFormatter:
             "age  | 24",
         ]
 
-        with mock.patch("odfesql_cli.main.click.secho") as mock_secho, mock.patch("odfesql_cli.main.click.confirm") as mock_confirm:
+        with mock.patch("src.main.click.secho") as mock_secho, mock.patch("src.main.click.confirm") as mock_confirm:
             expanded_results = formatter.format_output(data)
 
         mock_secho.assert_called_with(message="Output longer than terminal width", fg="red")
