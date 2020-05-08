@@ -16,9 +16,9 @@ import json
 import pytest
 from elasticsearch import ConnectionError, helpers, ConnectionPool
 
-from odfesql_cli.esconnection import ESConnection
-from odfesql_cli.utils import OutputSettings
-from odfesql_cli.formatter import Formatter
+from src.esconnection import ESConnection
+from src.utils import OutputSettings
+from src.formatter import Formatter
 
 TEST_INDEX_NAME = "odfesql_cli_test"
 ENDPOINT = "http://localhost:9200"

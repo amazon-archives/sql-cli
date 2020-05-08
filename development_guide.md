@@ -33,7 +33,7 @@ any endpoint, it uses http://localhost:9200 by default.
 ### Workflow
 
 1. Update version number
-    1. Modify the version number in `_init_.py` under `odfesql_cli` package. It will be used by `setup.py` for release.
+    1. Modify the version number in `_init_.py` under `src` package. It will be used by `setup.py` for release.
 2. Create/Update `setup.py` (if needed)
     1. For more details refer to https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py 
 3. Update README.md, Legal and copyright files(if needed)

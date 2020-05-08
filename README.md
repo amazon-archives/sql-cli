@@ -15,7 +15,7 @@ endpoint such as AWS Elasticsearch.
 
 ## Configuration
 - A config file is automatically created at `~/.config/odfesql-cli/config` at first launch (for MacOS and Linux). 
-Check out [clirc](./odfesql_cli/conf/clirc) for details of all available configurations.
+Check out [clirc](src/conf/clirc) for details of all available configurations.
 - It can be configured and will be auto-loaded next time.
 
 ## Features

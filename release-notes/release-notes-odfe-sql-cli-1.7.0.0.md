@@ -2,7 +2,7 @@
 
 ### New Features
 
-This is the first official release of Open Distro Elasticsearch SQL CLI
+This is the first official release of Open Distro for Elasticsearch SQL CLI
 
 ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `odfesql`. It serves as a support only for 
 [Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). User must have ODFE SQL
