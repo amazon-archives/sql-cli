@@ -1,17 +1,11 @@
-# Open Distro Elasticsearch SQL CLI
+# Open Distro for Elasticsearch SQL CLI
 
-ODFE: Open Distro for Elasticsearch 
-
-ODFE SQL CLI is a stand alone Python application and can be launched by a wake word `odfesql`. It serves as a support only for 
-[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). User must have ODFE SQL
-plugin installed to the Elasticsearch instance for connection. Usr can run this CLI from MacOS and Linux, and connect to any valid Elasticsearch 
-endpoint such as AWS Elasticsearch.
-
+The SQL CLI component in Open Distro for Elasticsearch (ODFE) is a stand-alone Python application and can be launched by a 'wake' word `odfesql`. It serves as a support only for 
+[Open Distro SQL plugin for Elasticsearch](https://opendistro.github.io/for-elasticsearch-docs/docs/sql/). User must have the  ODFE SQL plugin installed to your Elasticsearch instance to connect. Users can run this CLI from MacOS and Linux, and connect to any valid Elasticsearch end-point such as Amazon Elasticsearch.
 
 ## Installation
 - `pip install odfesql` 
-- ODFE SQL CLI is only compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020 https://pythonclock.org/ 
-
+- ODFE SQL CLI is only compatible with Python 3, because Python 2 is no longer maintained since 01/01/2020. See https://pythonclock.org/ 
 
 ## Configuration
 - A config file is automatically created at `~/.config/odfesql-cli/config` at first launch (for MacOS and Linux). 
@@ -19,8 +13,8 @@ Check out [clirc](src/conf/clirc) for details of all available configurations.
 - It can be configured and will be auto-loaded next time.
 
 ## Features
-- Multiline input
-- Input Auto-completion with index suggestion
+- Multi-line input
+- Input auto-completion with index suggestions
 - Syntax highlighting
 - Formatted output
     - Tabular format
@@ -28,7 +22,7 @@ Check out [clirc](src/conf/clirc) for details of all available configurations.
     - Enable horizontal display (by default) and vertical display when output is too wide, for better visualization
     - Pagination for long output
 
-- Connect to Elasticsearch with/without security enabled on either **Elasticsarch, Elasticsarch OSS, or AWS Elasticsearch Domain**.
+- Connect to Elasticsearch with/without security enabled on either **Elasticsearch OSS or Amazon Elasticsearch domains**.
 - Load config file
 
 ## Basic Usage
@@ -41,7 +35,7 @@ Check out [clirc](src/conf/clirc) for details of all available configurations.
     - *-u/-w:* username and password. User needs to provide credentials when connecting to:
         - Elasticsearch with X-pack security enabled
         - Elasticsearch OSS with [Open distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
-        - AWS Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
+        - Amazon Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
 
     - *--aws-auth:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
     CLI will try to retrieve this config to connect.
@@ -56,7 +50,6 @@ Check out [clirc](src/conf/clirc) for details of all available configurations.
 - Run the CLI with options
     - *-p*: always use pager to display output
     - *--clirc*: provide path of config file to load
-
 
 
 ## Code of Conduct
