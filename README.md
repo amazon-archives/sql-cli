@@ -34,7 +34,7 @@ Check out [clirc](src/conf/clirc) for details of all available configurations.
     If user doesn't provide an endpoint, by default it will try to connect to http://localhost:9200
     - *-u/-w:* username and password. User needs to provide credentials when connecting to:
         - Elasticsearch with X-pack security enabled
-        - Elasticsearch OSS with [Open distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
+        - Elasticsearch OSS with [Open Distro Security Plugin](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/) installed
         - Amazon Elasticsearch domain with [Fine Grained Access Control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html) enabled
 
     - *--aws-auth:* turn on to use AWS sigV4 authentication. It can be configured by AWS CLI `aws configure` command. ODFE SQL
