@@ -19,15 +19,28 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
           pip install setuptools wheel
 
-      # TODO: this test will pass, because we haven't spin up an ES instance
+      - name: Set up ES and install SQL plugin
+        run: |
+          sudo add-apt-repository ppa:openjdk-r/ppa
+          sudo apt update
+          sudo apt install openjdk-11-jdk
+          sudo apt install unzip
+          wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.6.1-amd64.deb
+          sudo dpkg -i elasticsearch-oss-7.6.1-amd64.deb
+          sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-sql/opendistro_sql-1.6.0.0.zip
+          sudo systemctl start elasticsearch.service
+
       - name: Run Tox Testing
         run: tox
+
+      - name: Stop ES
+        run: sudo systemctl stop elasticsearch.service
 
       - name: Build Artifact
         run: python setup.py sdist bdist_wheel
