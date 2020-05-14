@@ -35,15 +35,15 @@ with open("src/__init__.py", "rb") as f:
         ast.literal_eval(_version_re.search(f.read().decode("utf-8")).group(1))
     )
 
-description = "CLI for Elasticsearch Open Distro SQL with auto-completion and syntax highlighting."
+description = "Open Distro for Elasticsearch SQL CLI with auto-completion and syntax highlighting"
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="odfesql",
-    author="Zhongnan Su",
-    author_email="szhongna@amazon.com",
+    name="odfe-sql-cli",
+    author="Open Distro for Elasticsearch",
+    author_email="odfe-infra@amazon.com",
     version=version,
     license="Apache 2.0",
     url="https://opendistro.github.io/for-elasticsearch-docs/",
@@ -65,6 +65,7 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Programming Language :: SQL",
         "Topic :: Database",
         "Topic :: Database :: Front-Ends",
