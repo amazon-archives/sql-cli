@@ -35,7 +35,7 @@ from .esbuffer import es_is_multiline
 from .esstyle import style_factory, style_factory_output
 from .formatter import Formatter
 from .utils import OutputSettings
-from .__init__ import __version__
+from . import __version__
 
 
 # Ref: https://stackoverflow.com/questions/30425105/filter-special-chars-such-as-color-codes-from-shell-output
@@ -174,7 +174,7 @@ class OdfeSqlCli:
 
         :return: a dict that is parsed from esliterals.json
         """
-        from src.esliterals import __file__ as package_root
+        from .esliterals import __file__ as package_root
 
         package_root = os.path.dirname(package_root)
 

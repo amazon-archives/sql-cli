@@ -16,7 +16,7 @@ import os
 import stat
 import pytest
 
-from src.config import ensure_dir_exists
+from src.odfe_sql_cli.config import ensure_dir_exists
 
 
 class TestConfig:
