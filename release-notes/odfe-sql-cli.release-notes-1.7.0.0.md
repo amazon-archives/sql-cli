@@ -1,4 +1,4 @@
-## 2020-05-04 Version 1.7.0.0 (Current)
+## 2020-05-04 Version 1.7.0.0
 
 This is the first official release of Open Distro for Elasticsearch SQL CLI
 
