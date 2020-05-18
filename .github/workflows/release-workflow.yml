@@ -1,10 +1,9 @@
 name: Release SQL CLI Artifacts
-# This workflows is triggered on creating tags to master or an opendistro release branch
+# This workflows is triggered on creating tags to master
 on:
   push:
-    # TODO: use tags in next release
-    branches:
-      - 'opendistro-*'
+    tags:
+      - 'v*'
 
 jobs:
   build:
