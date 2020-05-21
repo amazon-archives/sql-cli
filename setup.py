@@ -46,7 +46,7 @@ setup(
     author_email="odfe-infra@amazon.com",
     version=version,
     license="Apache 2.0",
-    url="https://opendistro.github.io/for-elasticsearch-docs/",
+    url="https://opendistro.github.io/for-elasticsearch-docs/docs/sql/cli/",
     packages=find_packages('src'),
     package_dir={'': 'src'},
     package_data={"odfe_sql_cli": ["conf/clirc", "esliterals/esliterals.json"]},
