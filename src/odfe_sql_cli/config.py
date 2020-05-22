@@ -73,7 +73,7 @@ def get_config(clirc_file=None):
     This config comes from either existing config in the OS, or create a config file in the OS, and write default config
     including in the package to it.
     """
-    from src.conf import __file__ as package_root
+    from .conf import __file__ as package_root
 
     package_root = os.path.dirname(package_root)
 

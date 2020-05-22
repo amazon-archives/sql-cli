@@ -20,7 +20,7 @@ accessible across multiple test modules.
 import os
 import pytest
 
-from utils import create_index, delete_index, get_connection
+from .utils import create_index, delete_index, get_connection
 
 
 @pytest.fixture(scope="function")
@@ -34,7 +34,7 @@ def connection():
 
 @pytest.fixture(scope="function")
 def default_config_location():
-    from src.conf import __file__ as package_root
+    from src.odfe_sql_cli.conf import __file__ as package_root
 
     package_root = os.path.dirname(package_root)
     default_config = os.path.join(package_root, "clirc")

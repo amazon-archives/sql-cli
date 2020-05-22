@@ -17,11 +17,11 @@ import pytest
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.input.defaults import create_pipe_input
 
-from src.esbuffer import es_is_multiline
-from utils import estest, load_data, TEST_INDEX_NAME, ENDPOINT
-from src.odfesql_cli import OdfeSqlCli
-from src.esconnection import ESConnection
-from src.esstyle import style_factory
+from src.odfe_sql_cli.esbuffer import es_is_multiline
+from .utils import estest, load_data, TEST_INDEX_NAME, ENDPOINT
+from src.odfe_sql_cli.odfesql_cli import OdfeSqlCli
+from src.odfe_sql_cli.esconnection import ESConnection
+from src.odfe_sql_cli.esstyle import style_factory
 
 AUTH = None
 QUERY_WITH_CTRL_D = "select * from %s;\r\x04\r" % TEST_INDEX_NAME
