@@ -1,9 +1,9 @@
-## 2020-06-15 Version 1.8.1.0 (Current)
+## 2020-06-24 Version 1.9.0.0 (Current)
 
 ### Features
 #### Elasticsearch and ODFE SQL Plugin Compatibility
-* Feature [#50](https://github.com/opendistro-for-elasticsearch/sql-cli/pull/50): Elasticsearch 7.7.1 and ODFE SQL Plugin 1.8.1 compatibility
-(issue: [#49](https://github.com/opendistro-for-elasticsearch/sql-cli/issues/49))
+* Feature [#55](https://github.com/opendistro-for-elasticsearch/sql-cli/pull/55): Elasticsearch 7.8.0 and ODFE SQL Plugin 1.9.0 compatibility
+(issue: [#54](https://github.com/opendistro-for-elasticsearch/sql-cli/issues/54))
 
 #### Documentation
 * Feature [#48](https://github.com/opendistro-for-elasticsearch/sql-cli/pull/48): Added README badges
