@@ -5,6 +5,10 @@
 ![PyPi Downloads](https://img.shields.io/pypi/dm/odfe-sql-cli.svg)
 ![PRs welcome!](https://img.shields.io/badge/PRs-welcome!-success)
 
+---
+__NOTE:__ We have merged this repository into [Open Distro for Elasticsearch SQL](https://github.com/opendistro-for-elasticsearch/sql) as of 7/9/20. Please visit [here](https://github.com/opendistro-for-elasticsearch/sql/tree/master/sql-cli) for latest updates on SQL CLI. Thanks.
+---
+
 # Open Distro for Elasticsearch SQL CLI
 
 The SQL CLI component in Open Distro for Elasticsearch (ODFE) is a stand-alone Python application and can be launched by a 'wake' word `odfesql`. 
